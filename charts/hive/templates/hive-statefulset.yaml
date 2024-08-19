@@ -36,6 +36,9 @@ spec:
           securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          env:
+          - name: JAVA_HOME
+            value:  /usr/lib/jvm/java-8-openjdk-amd64/jre          
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
             - /bin/bash

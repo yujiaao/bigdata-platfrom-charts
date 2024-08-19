@@ -25,11 +25,11 @@ spec:
       - name: metastore
         image: "{{ .Values.metastore.image.repository }}:{{ .Values.metastore.image.tag }}"
         imagePullPolicy: {{ .Values.metastore.image.pullPolicy | quote }}
-        command:
+        command:    
           - "/usr/local/bin/bootstrap.sh"
           - "metastore"
         securityContext:
-          runAsUser: 971
+          runAsUser: 0
         resources:
         {{ toYaml .Values.metastore.resources | indent 10 }}
         volumeMounts:
